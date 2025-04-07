@@ -1,0 +1,43 @@
+
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Bringing Your Vision to Life through",
+    "subtitle": "Video & Design",
+    "description": "Professional video production and graphic design services tailored to elevate your brand's visual identity and captivate your audience.",
+    "getQuote": "Get a Quote",
+    "viewPortfolio": "View Portfolio",
+    "scrollDown": "Scroll Down"
+  },
+  "about": {
+    "title": "About Me",
+    "intro": "Hello! I'm a passionate videomaker and graphic designer with over 8 years of experience creating compelling visual content for brands and individuals alike. My mission is to help businesses communicate their unique stories through high-quality video production and stunning design.",
+    "belief": "I believe that great visual storytelling can transform how audiences perceive and engage with your brand. Whether you need a professional video production or eye-catching graphic designs, I'm dedicated to delivering results that exceed your expectations.",
+    "stats": {
+      "experience": "Years Experience",
+      "clients": "Clients",
+      "projects": "Projects",
+      "awards": "Awards"
+    },
+    "cta": {
+      "services": "My Services",
+      "contact": "Get In Touch"
+    },
+    "skills": "Skills & Expertise",
+    "equipment": "Equipment & Software"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "language": {
+    "en": "English",
+    "pt": "Portuguese"
+  }
+}
