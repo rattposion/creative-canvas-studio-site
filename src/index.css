@@ -121,4 +121,18 @@
   .gradient-text {
     @apply bg-gradient-to-r from-and-blue via-and-orange to-and-yellow bg-clip-text text-transparent;
   }
+  
+  /* Fix for light mode footer text */
+  .light-mode-text {
+    @apply text-gray-800 dark:text-gray-300;
+  }
+  
+  .light-mode-heading {
+    @apply text-gray-900 dark:text-white;
+  }
+  
+  /* Improve light mode link visibility */
+  .footer-link {
+    @apply text-gray-700 hover:text-and-blue dark:text-gray-300 dark:hover:text-white;
+  }
 }
