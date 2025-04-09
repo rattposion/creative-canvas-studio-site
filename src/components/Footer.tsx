@@ -149,8 +149,8 @@ const Footer = () => {
         </div>
       </div>
       
-      {/* Copyright */}
-      <div className="bg-gray-100 dark:bg-creative-dark py-6">
+      {/* Copyright - Updated to use dark mode classes */}
+      <div className="bg-gray-100 dark:bg-and-dark py-6">
         <div className="container mx-auto text-center text-gray-600 dark:text-gray-400 text-sm">
           <p>© {currentYear} CreativeCanvas. All rights reserved. Professional Video & Graphic Design Services.</p>
         </div>
