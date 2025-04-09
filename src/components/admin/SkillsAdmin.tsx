@@ -1,34 +1,22 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Trash, Plus, Save } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import {
-  Slider
-} from "@/components/ui/slider";
+import { Slider } from "@/components/ui/slider";
+import { useSiteContext } from "@/contexts/SiteContext";
 
 const SkillsAdmin = () => {
   const { toast } = useToast();
+  const { aboutContent, updateSkills, updateEquipment } = useSiteContext();
   
-  const [skills, setSkills] = useState([
-    { id: 1, name: "Video Production", level: 95 },
-    { id: 2, name: "Video Editing", level: 90 },
-    { id: 3, name: "Motion Graphics", level: 85 },
-    { id: 4, name: "Brand Design", level: 90 },
-    { id: 5, name: "UI/UX Design", level: 80 },
-  ]);
-  
-  const [equipment, setEquipment] = useState([
-    { id: 1, name: "Sony Alpha A7 III" },
-    { id: 2, name: "DJI Ronin Gimbal" },
-    { id: 3, name: "Adobe Premiere Pro" },
-    { id: 4, name: "Adobe After Effects" },
-    { id: 5, name: "Adobe Illustrator" },
-    { id: 6, name: "Adobe Photoshop" },
-    { id: 7, name: "Final Cut Pro X" },
-    { id: 8, name: "DaVinci Resolve" },
-  ]);
+  const [skills, setSkills] = useState(aboutContent.skills);
+  const [equipment, setEquipment] = useState(aboutContent.equipment);
+
+  useEffect(() => {
+    setSkills(aboutContent.skills);
+    setEquipment(aboutContent.equipment);
+  }, [aboutContent]);
 
   const handleSkillChange = (id: number, field: "name" | "level", value: string | number) => {
     setSkills(skills.map(skill => 
@@ -61,6 +49,9 @@ const SkillsAdmin = () => {
   };
 
   const handleSave = () => {
+    updateSkills(skills);
+    updateEquipment(equipment);
+    
     toast({
       title: "Changes saved",
       description: "Skills & Equipment have been updated successfully",

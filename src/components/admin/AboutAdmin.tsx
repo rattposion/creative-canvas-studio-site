@@ -1,22 +1,26 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Trash, Plus, Save } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useSiteContext } from "@/contexts/SiteContext";
 
 const AboutAdmin = () => {
   const { toast } = useToast();
-  const [intro, setIntro] = useState("AND Studios is a creative video production and design agency specializing in brand storytelling. Founded in 2015, our team of talented creatives works with clients to create compelling visual content that engages audiences.");
-  const [belief, setBelief] = useState("We believe in the power of visual storytelling to transform how audiences connect with brands. Our approach combines technical expertise with creative vision to deliver results that exceed expectations.");
+  const { aboutContent, updateAboutContent } = useSiteContext();
   
-  const [stats, setStats] = useState([
-    { id: 1, value: "8+", label: "Years Experience" },
-    { id: 2, value: "120+", label: "Satisfied Clients" },
-    { id: 3, value: "350+", label: "Projects Completed" },
-    { id: 4, value: "15", label: "Awards Won" },
-  ]);
+  const [intro, setIntro] = useState(aboutContent.intro);
+  const [belief, setBelief] = useState(aboutContent.belief);
+  const [stats, setStats] = useState(aboutContent.stats);
+
+  // Update local state when context changes (e.g., from another component)
+  useEffect(() => {
+    setIntro(aboutContent.intro);
+    setBelief(aboutContent.belief);
+    setStats(aboutContent.stats);
+  }, [aboutContent]);
 
   const handleStatChange = (id: number, field: "value" | "label", value: string) => {
     setStats(stats.map(stat => 
@@ -34,7 +38,13 @@ const AboutAdmin = () => {
   };
 
   const handleSave = () => {
-    // In a real application, this would save to a database
+    // Update the context, which will also update localStorage
+    updateAboutContent({
+      intro,
+      belief,
+      stats
+    });
+    
     toast({
       title: "Changes saved",
       description: "Your About section has been updated successfully",
