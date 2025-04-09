@@ -1,76 +1,101 @@
-import { Film, PenTool, Video, Users, Image, PieChart, Table, Layout } from 'lucide-react';
+import { Film, PenTool, Video, Users, Image, PieChart, Layout, Palette, Globe } from 'lucide-react';
+import React from 'react';
 import ServiceCard from './ServiceCard';
 
-const Services = () => {
+const Services: React.FC = () => {
   const videoServices = [
     {
-      title: "Video Production",
-      description: "Professional video production services from concept to final delivery, tailored to your brand's unique story.",
+      title: "Produção de Vídeo",
+      description: "Serviços profissionais de produção de vídeo, desde o conceito até a entrega final, adaptados à história única da sua marca.",
       icon: Film,
       features: [
-        "Corporate Video Production",
-        "Event Coverage & Documentation",
-        "Promotional Videos",
-        "Product Demonstrations",
-        "Interview Productions"
+        "Vídeos Corporativos",
+        "Cobertura de Eventos",
+        "Vídeos Promocionais",
+        "Demonstrações de Produtos",
+        "Produções de Entrevistas"
       ]
     },
     {
-      title: "Video Editing",
-      description: "Transform raw footage into polished, captivating stories that engage your audience and deliver your message.",
+      title: "Edição de Vídeo",
+      description: "Transforme filmagens brutas em histórias polidas e cativantes que envolvem seu público e transmitem sua mensagem.",
       icon: Video,
       features: [
-        "Professional Editing & Color Grading",
-        "Motion Graphics Integration",
-        "Sound Design & Audio Mixing",
-        "Visual Effects Application",
-        "Format Optimization for Various Platforms"
+        "Edição Profissional e Correção de Cor",
+        "Integração de Motion Graphics",
+        "Design de Som e Mixagem",
+        "Aplicação de Efeitos Visuais",
+        "Otimização para Várias Plataformas"
       ]
     }
   ];
   
   const designServices = [
     {
-      title: "Brand Identity Design",
-      description: "Create a distinctive visual identity that sets your brand apart and resonates with your target audience.",
+      title: "Design de Identidade Visual",
+      description: "Crie uma identidade visual distintiva que destaque sua marca e ressoe com seu público-alvo.",
       icon: PenTool,
       features: [
-        "Logo Design & Brand Guidelines",
-        "Visual Identity Systems",
-        "Brand Collateral Design",
-        "Typography Selection",
-        "Color Palette Development"
+        "Design de Logo e Manual de Marca",
+        "Sistema de Identidade Visual",
+        "Design de Material Institucional",
+        "Seleção de Tipografia",
+        "Desenvolvimento de Paleta de Cores"
       ]
     },
     {
-      title: "Marketing Materials",
-      description: "Eye-catching designs for all your marketing needs, both digital and print, to promote your brand effectively.",
+      title: "Design para Marketing",
+      description: "Designs chamativos para todas as suas necessidades de marketing, tanto digital quanto impresso.",
       icon: Image,
       features: [
-        "Social Media Graphics",
-        "Print Collateral Design",
-        "Digital Ad Creatives",
-        "Presentation Design",
-        "Package Design"
+        "Artes para Redes Sociais",
+        "Design de Material Impresso",
+        "Criativos para Anúncios Digitais",
+        "Design de Apresentações",
+        "Design de Embalagens"
+      ]
+    },
+    {
+      title: "Design Web",
+      description: "Interfaces modernas e responsivas que proporcionam uma excelente experiência ao usuário.",
+      icon: Globe,
+      features: [
+        "Design de Interface (UI)",
+        "Design de Experiência (UX)",
+        "Landing Pages",
+        "Email Marketing",
+        "Banners e Anúncios Online"
+      ]
+    },
+    {
+      title: "Design Editorial",
+      description: "Layouts profissionais para publicações impressas e digitais que comunicam com clareza e estilo.",
+      icon: Layout,
+      features: [
+        "Diagramação de Revistas",
+        "Design de Catálogos",
+        "E-books e Livros Digitais",
+        "Relatórios Corporativos",
+        "Newsletters"
       ]
     }
   ];
 
   return (
     <section id="services" className="py-24 bg-gray-50 dark:bg-and-dark">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="section-title inline-block mx-auto mb-4 text-and-dark dark:text-white">Our Services</h2>
+          <h2 className="section-title inline-block mx-auto mb-4 text-and-dark dark:text-white">Nossos Serviços</h2>
           <div className="h-1 w-20 bg-primary mx-auto mb-6"></div>
           <p className="text-and-dark dark:text-white max-w-2xl mx-auto">
-            Professional video production and graphic design services to elevate your brand and captivate your audience.
+            Serviços profissionais de produção de vídeo e design gráfico para elevar sua marca e cativar seu público.
           </p>
         </div>
 
         <div className="mb-20">
           <h3 className="text-2xl font-bold mb-10 flex items-center text-and-dark dark:text-white">
             <Film className="mr-3 text-primary" />
-            Videomaking Services
+            Serviços de Vídeo
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {videoServices.map((service, index) => (
@@ -88,9 +113,9 @@ const Services = () => {
         <div>
           <h3 className="text-2xl font-bold mb-10 flex items-center text-and-dark dark:text-white">
             <PenTool className="mr-3 text-primary" />
-            Graphic Design Services
+            Serviços de Design
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             {designServices.map((service, index) => (
               <ServiceCard 
                 key={index}

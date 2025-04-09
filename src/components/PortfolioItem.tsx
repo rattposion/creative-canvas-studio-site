@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Play, Maximize, ArrowRight } from 'lucide-react';
 
@@ -38,27 +37,27 @@ const PortfolioItem = ({
         />
         
         {/* Overlay */}
-        <div className={`absolute inset-0 bg-gradient-to-t from-creative-navy/80 via-creative-navy/40 to-transparent flex flex-col justify-end p-6 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-80'}`}>
+        <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex flex-col justify-end p-6 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-95'}`}>
           <div className="transform transition-transform duration-300 translate-y-0 group-hover:translate-y-0">
             <div className="flex justify-between items-center mb-2">
-              <span className="text-xs font-medium uppercase tracking-wider text-creative-teal">
+              <span className="text-xs font-medium uppercase tracking-wider text-white">
                 {category}
               </span>
               {type === 'video' && (
-                <div className="bg-creative-teal/20 backdrop-blur-sm text-white p-1 rounded-full">
-                  <Play size={16} className="text-creative-teal" />
+                <div className="bg-white/20 backdrop-blur-sm text-white p-1 rounded-full">
+                  <Play size={16} className="text-white" />
                 </div>
               )}
             </div>
             <h3 className="text-xl font-bold text-white mb-1">{title}</h3>
-            <p className="text-sm text-white/80 mb-4 line-clamp-2">{description}</p>
+            <p className="text-sm text-white mb-4 line-clamp-2">{description}</p>
             
             <div className={`transition-all duration-300 ${isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
               <a 
                 href="#" 
-                className="inline-flex items-center text-white text-sm font-medium hover:text-creative-teal transition-colors"
+                className="inline-flex items-center text-white text-sm font-medium hover:text-teal-300 transition-colors"
               >
-                View Project <ArrowRight size={16} className="ml-1" />
+                Ver Projeto <ArrowRight size={16} className="ml-1" />
               </a>
             </div>
           </div>

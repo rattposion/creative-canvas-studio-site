@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import PortfolioItem from './PortfolioItem';
 
@@ -72,10 +71,10 @@ const Portfolio = () => {
       );
 
   return (
-    <section id="portfolio" className="py-24 bg-white dark:bg-creative-dark">
+    <section id="portfolio" className="py-24 bg-white dark:bg-gray-900">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="section-title inline-block mx-auto mb-4">Portfolio</h2>
+          <h2 className="section-title inline-block mx-auto mb-4 text-and-dark dark:text-white">Portfolio</h2>
           <div className="h-1 w-20 bg-primary mx-auto mb-6"></div>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Explore our collection of video and design projects that showcase our creativity and expertise.
@@ -92,7 +91,7 @@ const Portfolio = () => {
                 className={`py-2 px-4 md:px-6 rounded-full text-sm md:text-base transition-all whitespace-nowrap ${
                   activeFilter === filter.value
                     ? 'bg-primary text-white'
-                    : 'bg-gray-100 dark:bg-creative-navy text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-creative-navy/80'
+                    : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                 }`}
               >
                 {filter.label}
