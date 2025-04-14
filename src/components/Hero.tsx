@@ -2,6 +2,7 @@
 import { ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -33,49 +34,118 @@ const Hero = () => {
       
       <div className="container mx-auto px-4 z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 
-            className={`text-4xl md:text-6xl lg:text-7xl font-bold text-gray-800 dark:text-white mb-6 leading-tight transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          <motion.h1 
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-800 dark:text-white mb-6 leading-tight"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
             {t('hero.title')}
-            <span className="gradient-text block mt-2 animate-pulse">{t('hero.subtitle')}</span>
-          </h1>
-          <p 
-            className={`text-lg md:text-xl text-gray-700 dark:text-white/80 mb-8 max-w-2xl mx-auto transition-all duration-1000 delay-300 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+            <motion.span 
+              className="gradient-text block mt-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 1 }}
+            >
+              {t('hero.subtitle')}
+            </motion.span>
+          </motion.h1>
+          <motion.p 
+            className="text-lg md:text-xl text-gray-700 dark:text-white/80 mb-8 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
           >
             {t('hero.description')}
-          </p>
-          <div 
-            className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-1000 delay-500 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          </motion.p>
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
           >
-            <a 
+            <motion.a 
               href="#contact" 
-              className="btn btn-primary py-3 px-8 rounded-full text-base hover:scale-105 transition-transform duration-300"
+              className="btn btn-primary py-3 px-8 rounded-full text-base"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               {t('hero.getQuote')}
-            </a>
-            <a 
+            </motion.a>
+            <motion.a 
               href="#portfolio" 
-              className="btn btn-ghost border border-gray-300 dark:border-white/20 py-3 px-8 rounded-full text-base dark:text-white hover:scale-105 transition-transform duration-300"
+              className="btn btn-ghost border border-gray-300 dark:border-white/20 py-3 px-8 rounded-full text-base dark:text-white"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               {t('hero.viewPortfolio')}
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
         </div>
       </div>
       
       {/* Scroll down indicator with enhanced animation */}
-      <div 
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gray-500 dark:text-white/50 flex flex-col items-center cursor-pointer hover:text-gray-700 dark:hover:text-white/80 transition-colors animate-bounce"
+      <motion.div 
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gray-500 dark:text-white/50 flex flex-col items-center cursor-pointer hover:text-gray-700 dark:hover:text-white/80 transition-colors"
         onClick={scrollToServices}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
       >
         <span className="text-sm mb-2">{t('hero.scrollDown')}</span>
-        <ChevronDown size={24} className="animate-bounce" />
-      </div>
+        <motion.div
+          animate={{ 
+            y: [0, 8, 0],
+          }}
+          transition={{ 
+            duration: 1.5, 
+            repeat: Infinity, 
+            repeatType: "loop" as const
+          }}
+        >
+          <ChevronDown size={24} />
+        </motion.div>
+      </motion.div>
 
-      {/* Floating particles */}
-      <div className="absolute top-1/4 left-1/4 w-4 h-4 rounded-full bg-and-blue/20 animate-pulse"></div>
-      <div className="absolute top-3/4 left-1/3 w-6 h-6 rounded-full bg-and-orange/20 animate-pulse" style={{animationDelay: '1s'}}></div>
-      <div className="absolute top-1/2 right-1/4 w-5 h-5 rounded-full bg-and-yellow/20 animate-pulse" style={{animationDelay: '0.5s'}}></div>
+      {/* Floating particles with animation */}
+      <motion.div 
+        className="absolute top-1/4 left-1/4 w-4 h-4 rounded-full bg-and-blue/20"
+        animate={{ 
+          y: [0, -15, 0], 
+          opacity: [0.4, 0.8, 0.4]
+        }}
+        transition={{ 
+          duration: 4, 
+          repeat: Infinity,
+          repeatType: "reverse" as const 
+        }}
+      />
+      <motion.div 
+        className="absolute top-3/4 left-1/3 w-6 h-6 rounded-full bg-and-orange/20"
+        animate={{ 
+          y: [0, -20, 0], 
+          opacity: [0.3, 0.7, 0.3]
+        }}
+        transition={{ 
+          duration: 5, 
+          repeat: Infinity,
+          repeatType: "reverse" as const,
+          delay: 0.5 
+        }}
+      />
+      <motion.div 
+        className="absolute top-1/2 right-1/4 w-5 h-5 rounded-full bg-and-yellow/20"
+        animate={{ 
+          y: [0, -12, 0], 
+          opacity: [0.3, 0.6, 0.3]
+        }}
+        transition={{ 
+          duration: 4.5, 
+          repeat: Infinity,
+          repeatType: "reverse" as const,
+          delay: 1 
+        }}
+      />
     </section>
   );
 };
