@@ -9,6 +9,8 @@ import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 import "./i18n";
 import { SiteProvider } from "./contexts/SiteContext";
+import WhatsAppButton from "./components/WhatsAppButton";
+import ColorToggle from "./components/ColorToggle";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +29,8 @@ const App = () => {
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
+            <WhatsAppButton />
+            <ColorToggle />
           </BrowserRouter>
         </TooltipProvider>
       </SiteProvider>
