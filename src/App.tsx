@@ -10,7 +10,7 @@ import NotFound from "./pages/NotFound";
 import "./i18n";
 import { SiteProvider } from "./contexts/SiteContext";
 import WhatsAppButton from "./components/WhatsAppButton";
-import ColorToggle from "./components/ColorToggle";
+// ColorToggle is now removed from the imports
 
 const queryClient = new QueryClient();
 
@@ -30,7 +30,7 @@ const App = () => {
               <Route path="*" element={<NotFound />} />
             </Routes>
             <WhatsAppButton />
-            <ColorToggle />
+            {/* ColorToggle component has been removed */}
           </BrowserRouter>
         </TooltipProvider>
       </SiteProvider>
@@ -39,3 +39,4 @@ const App = () => {
 };
 
 export default App;
+
