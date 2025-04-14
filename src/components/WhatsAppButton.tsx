@@ -36,6 +36,7 @@ const WhatsAppButton = ({ phoneNumber = "5511999999999", message = "Olá! Gostar
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
   };
 
+  // Fix animation variants to use proper types for repeatType
   const pulseAnimation = {
     initial: {
       scale: 1,
@@ -51,7 +52,7 @@ const WhatsAppButton = ({ phoneNumber = "5511999999999", message = "Olá! Gostar
       transition: {
         duration: 2,
         repeat: hasAnimated ? 0 : Infinity,
-        repeatType: "loop"
+        repeatType: "loop" as const // Fixing the type here with as const
       }
     }
   };
