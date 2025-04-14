@@ -21,6 +21,8 @@ const colorSchemes: ColorScheme[] = [
 const ColorToggle = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentScheme, setCurrentScheme] = useState<ColorScheme>(colorSchemes[0]);
+  const [isAutoChange, setIsAutoChange] = useState(false);
+  const [changeInterval, setChangeInterval] = useState(10000); // 10 seconds default
 
   // Apply the color scheme to the document
   useEffect(() => {
@@ -30,7 +32,9 @@ const ColorToggle = () => {
     
     // Store the current color scheme in localStorage
     localStorage.setItem('colorScheme', currentScheme.name);
-  }, [currentScheme]);
+    localStorage.setItem('autoChangeColors', isAutoChange.toString());
+    localStorage.setItem('colorChangeInterval', changeInterval.toString());
+  }, [currentScheme, isAutoChange, changeInterval]);
 
   // Load saved color scheme on component mount
   useEffect(() => {
@@ -41,9 +45,39 @@ const ColorToggle = () => {
         setCurrentScheme(scheme);
       }
     }
+
+    const savedAutoChange = localStorage.getItem('autoChangeColors');
+    if (savedAutoChange) {
+      setIsAutoChange(savedAutoChange === 'true');
+    }
+
+    const savedInterval = localStorage.getItem('colorChangeInterval');
+    if (savedInterval) {
+      setChangeInterval(parseInt(savedInterval, 10));
+    }
   }, []);
 
+  // Auto change effect
+  useEffect(() => {
+    let intervalId: number | undefined;
+
+    if (isAutoChange) {
+      intervalId = window.setInterval(() => {
+        // Get current index and calculate next index
+        const currentIndex = colorSchemes.findIndex(scheme => scheme.name === currentScheme.name);
+        const nextIndex = (currentIndex + 1) % colorSchemes.length;
+        setCurrentScheme(colorSchemes[nextIndex]);
+      }, changeInterval);
+    }
+
+    // Clear interval on unmount or when isAutoChange changes
+    return () => {
+      if (intervalId) clearInterval(intervalId);
+    };
+  }, [isAutoChange, changeInterval, currentScheme.name]);
+
   const toggleOpen = () => setIsOpen(!isOpen);
+  const toggleAutoChange = () => setIsAutoChange(!isAutoChange);
 
   // Helper to convert hex color to HSL format for CSS variables
   const hexToHsl = (hex: string): string => {
@@ -117,7 +151,7 @@ const ColorToggle = () => {
               key={scheme.name}
               onClick={() => {
                 setCurrentScheme(scheme);
-                setIsOpen(false);
+                if (isAutoChange) setIsAutoChange(false);
               }}
               className={cn(
                 "flex items-center gap-2 p-2 rounded-md transition-colors",
@@ -134,6 +168,41 @@ const ColorToggle = () => {
               <span className="text-sm">{scheme.name.charAt(0).toUpperCase() + scheme.name.slice(1)}</span>
             </button>
           ))}
+          
+          <div className="mt-3 border-t border-gray-200 dark:border-gray-700 pt-3">
+            <div className="flex items-center justify-between mb-2">
+              <label htmlFor="auto-change" className="text-sm">Alternar automaticamente</label>
+              <div className="relative inline-block w-10 mr-2 align-middle select-none">
+                <input 
+                  type="checkbox" 
+                  id="auto-change" 
+                  checked={isAutoChange}
+                  onChange={toggleAutoChange}
+                  className="sr-only"
+                />
+                <div className={`block h-6 bg-gray-300 rounded-full w-10 ${isAutoChange ? 'bg-primary' : ''}`}></div>
+                <div className={`absolute left-1 top-1 w-4 h-4 rounded-full transition-transform bg-white ${isAutoChange ? 'transform translate-x-4' : ''}`}></div>
+              </div>
+            </div>
+            
+            {isAutoChange && (
+              <div className="mb-2">
+                <label htmlFor="interval" className="block text-sm mb-1">Intervalo (segundos)</label>
+                <select 
+                  id="interval" 
+                  value={changeInterval}
+                  onChange={(e) => setChangeInterval(parseInt(e.target.value, 10))}
+                  className="w-full p-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded text-sm"
+                >
+                  <option value={3000}>3 segundos</option>
+                  <option value={5000}>5 segundos</option>
+                  <option value={10000}>10 segundos</option>
+                  <option value={15000}>15 segundos</option>
+                  <option value={30000}>30 segundos</option>
+                </select>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>
