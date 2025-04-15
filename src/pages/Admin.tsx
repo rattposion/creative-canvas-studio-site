@@ -9,6 +9,7 @@ import AdminHeader from "@/components/admin/AdminHeader";
 import { useToast } from "@/hooks/use-toast";
 import { Navigate } from "react-router-dom";
 import WhatsAppAdmin from "@/components/admin/WhatsAppAdmin";
+import MessagesAdmin from "@/components/admin/MessagesAdmin";
 
 const Admin = () => {
   const { toast } = useToast();
@@ -91,7 +92,7 @@ const Admin = () => {
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Admin Dashboard</h1>
         
         <Tabs defaultValue="about" className="w-full">
-          <TabsList className="grid grid-cols-3 md:grid-cols-7 mb-6">
+          <TabsList className="grid grid-cols-3 md:grid-cols-8 mb-6">
             <TabsTrigger value="about">About</TabsTrigger>
             <TabsTrigger value="skills">Skills</TabsTrigger>
             <TabsTrigger value="services">Services</TabsTrigger>
@@ -99,6 +100,7 @@ const Admin = () => {
             <TabsTrigger value="contact">Contact</TabsTrigger>
             <TabsTrigger value="contact-info">Contact Info</TabsTrigger>
             <TabsTrigger value="whatsapp">WhatsApp</TabsTrigger>
+            <TabsTrigger value="messages">Messages</TabsTrigger>
           </TabsList>
           
           <TabsContent value="about" className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow">
@@ -127,6 +129,10 @@ const Admin = () => {
           
           <TabsContent value="whatsapp" className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow">
             <WhatsAppAdmin />
+          </TabsContent>
+          
+          <TabsContent value="messages" className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow">
+            <MessagesAdmin />
           </TabsContent>
         </Tabs>
       </div>

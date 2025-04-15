@@ -22,7 +22,19 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
     
-    // Simulate form submission
+    // Save the message to localStorage
+    const newMessage = {
+      id: Date.now().toString(),
+      ...formData,
+      date: new Date().toLocaleString()
+    };
+    
+    const savedMessages = localStorage.getItem('contact-messages');
+    const messages = savedMessages ? JSON.parse(savedMessages) : [];
+    messages.unshift(newMessage);
+    localStorage.setItem('contact-messages', JSON.stringify(messages));
+
+    // Show success message
     setTimeout(() => {
       toast({
         title: "Message Sent!",
