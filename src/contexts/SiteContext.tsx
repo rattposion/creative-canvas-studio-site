@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 // Define types for our site content
@@ -25,13 +24,24 @@ export interface AboutContent {
   equipment: Equipment[];
 }
 
-// Create the context with default values
+interface WhatsAppSettings {
+  phoneNumber: string;
+  message: string;
+}
+
 interface SiteContextType {
   aboutContent: AboutContent;
+  whatsAppSettings: WhatsAppSettings;
   updateAboutContent: (content: Partial<AboutContent>) => void;
   updateSkills: (skills: Skill[]) => void;
   updateEquipment: (equipment: Equipment[]) => void;
+  updateWhatsAppSettings: (settings: Partial<WhatsAppSettings>) => void;
 }
+
+const defaultWhatsAppSettings: WhatsAppSettings = {
+  phoneNumber: "5511999999999",
+  message: "Olá! Gostaria de mais informações."
+};
 
 const defaultAboutContent: AboutContent = {
   intro: "AND Studios is a creative video production and design agency specializing in brand storytelling. Founded in 2015, our team of talented creatives works with clients to create compelling visual content that engages audiences.",
@@ -63,26 +73,38 @@ const defaultAboutContent: AboutContent = {
 
 const SiteContext = createContext<SiteContextType>({
   aboutContent: defaultAboutContent,
+  whatsAppSettings: defaultWhatsAppSettings,
   updateAboutContent: () => {},
   updateSkills: () => {},
   updateEquipment: () => {},
+  updateWhatsAppSettings: () => {},
 });
 
 export const useSiteContext = () => useContext(SiteContext);
 
 export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Initialize state with default values or from localStorage
   const [aboutContent, setAboutContent] = useState<AboutContent>(() => {
     const savedContent = localStorage.getItem('aboutContent');
     return savedContent ? JSON.parse(savedContent) : defaultAboutContent;
   });
 
-  // Save to localStorage whenever content changes
+  const [whatsAppSettings, setWhatsAppSettings] = useState<WhatsAppSettings>(() => {
+    const savedSettings = localStorage.getItem('whatsAppSettings');
+    return savedSettings ? JSON.parse(savedSettings) : defaultWhatsAppSettings;
+  });
+
   useEffect(() => {
     localStorage.setItem('aboutContent', JSON.stringify(aboutContent));
   }, [aboutContent]);
 
-  // Update functions
+  useEffect(() => {
+    localStorage.setItem('whatsAppSettings', JSON.stringify(whatsAppSettings));
+  }, [whatsAppSettings]);
+
+  const updateWhatsAppSettings = (settings: Partial<WhatsAppSettings>) => {
+    setWhatsAppSettings(prev => ({ ...prev, ...settings }));
+  };
+
   const updateAboutContent = (content: Partial<AboutContent>) => {
     setAboutContent(prev => ({ ...prev, ...content }));
   };
@@ -98,9 +120,11 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
   return (
     <SiteContext.Provider value={{ 
       aboutContent, 
+      whatsAppSettings,
       updateAboutContent, 
       updateSkills, 
-      updateEquipment 
+      updateEquipment,
+      updateWhatsAppSettings
     }}>
       {children}
     </SiteContext.Provider>

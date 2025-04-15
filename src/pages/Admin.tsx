@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AboutAdmin from "@/components/admin/AboutAdmin";
@@ -9,19 +8,17 @@ import ContactAdmin from "@/components/admin/ContactAdmin";
 import AdminHeader from "@/components/admin/AdminHeader";
 import { useToast } from "@/hooks/use-toast";
 import { Navigate } from "react-router-dom";
+import WhatsAppAdmin from "@/components/admin/WhatsAppAdmin";
 
 const Admin = () => {
   const { toast } = useToast();
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
-    // In a real app, we would check for auth token
-    // For demo, we're just using localStorage
     return localStorage.getItem("admin-authenticated") === "true";
   });
   const [password, setPassword] = useState("");
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simple password check for demo purposes
     if (password === "admin123") {
       localStorage.setItem("admin-authenticated", "true");
       setIsAuthenticated(true);
@@ -94,13 +91,14 @@ const Admin = () => {
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Admin Dashboard</h1>
         
         <Tabs defaultValue="about" className="w-full">
-          <TabsList className="grid grid-cols-3 md:grid-cols-6 mb-6">
+          <TabsList className="grid grid-cols-3 md:grid-cols-7 mb-6">
             <TabsTrigger value="about">About</TabsTrigger>
             <TabsTrigger value="skills">Skills</TabsTrigger>
             <TabsTrigger value="services">Services</TabsTrigger>
             <TabsTrigger value="portfolio">Portfolio</TabsTrigger>
             <TabsTrigger value="contact">Contact</TabsTrigger>
             <TabsTrigger value="contact-info">Contact Info</TabsTrigger>
+            <TabsTrigger value="whatsapp">WhatsApp</TabsTrigger>
           </TabsList>
           
           <TabsContent value="about" className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow">
@@ -125,6 +123,10 @@ const Admin = () => {
           
           <TabsContent value="contact-info" className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow">
             <ContactAdmin showInfoOnly={true} />
+          </TabsContent>
+          
+          <TabsContent value="whatsapp" className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow">
+            <WhatsAppAdmin />
           </TabsContent>
         </Tabs>
       </div>

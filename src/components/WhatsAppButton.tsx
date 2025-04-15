@@ -1,16 +1,16 @@
-
 import React, { useState, useEffect } from 'react';
 import { MessageCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import { useSiteContext } from '@/contexts/SiteContext';
 
-const WhatsAppButton = ({ phoneNumber = "5511999999999", message = "Olá! Gostaria de mais informações." }) => {
+const WhatsAppButton = () => {
   const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
+  const { whatsAppSettings } = useSiteContext();
   
-  // Control visibility with scroll position
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 300;
@@ -32,11 +32,10 @@ const WhatsAppButton = ({ phoneNumber = "5511999999999", message = "Olá! Gostar
   }, []);
   
   const handleClick = () => {
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+    const encodedMessage = encodeURIComponent(whatsAppSettings.message);
+    window.open(`https://wa.me/${whatsAppSettings.phoneNumber}?text=${encodedMessage}`, '_blank');
   };
 
-  // Fix animation variants to use proper types for repeatType
   const pulseAnimation = {
     initial: {
       scale: 1,
@@ -52,7 +51,7 @@ const WhatsAppButton = ({ phoneNumber = "5511999999999", message = "Olá! Gostar
       transition: {
         duration: 2,
         repeat: hasAnimated ? 0 : Infinity,
-        repeatType: "loop" as const // Fixing the type here with as const
+        repeatType: "loop" as const
       }
     }
   };
