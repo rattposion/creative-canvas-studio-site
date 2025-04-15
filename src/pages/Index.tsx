@@ -12,8 +12,8 @@ const Index = () => {
   return (
     <div className="bg-white dark:bg-and-dark min-h-screen">
       <Helmet>
-        <title>AND Studios - Video & Design</title>
-        <meta name="description" content="Professional video production and graphic design services by AND Studios" />
+        <title>A.N.D STUDIOS - Video & Design</title>
+        <meta name="description" content="A.N.D STUDIOS - Professional video production and graphic design services" />
       </Helmet>
       <Navbar />
       <Hero />
@@ -27,3 +27,4 @@ const Index = () => {
 };
 
 export default Index;
+

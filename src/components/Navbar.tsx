@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -41,7 +40,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center">
             <motion.img 
               src="/lovable-uploads/5e0b424a-1bdd-44f4-ac09-012ae812cad8.png" 
-              alt="AND Studios" 
+              alt="A.N.D STUDIOS" 
               className="h-10 md:h-12"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}

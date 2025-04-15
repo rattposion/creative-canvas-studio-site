@@ -1,4 +1,3 @@
-
 {
   "navigation": {
     "home": "Início",
@@ -10,13 +9,13 @@
   "hero": {
     "title": "Trazendo sua visão à vida através de",
     "subtitle": "Vídeo & Design",
-    "description": "Serviços profissionais de produção de vídeo e design gráfico personalizados para elevar a identidade visual da sua marca e cativar seu público.",
+    "description": "Serviços profissionais de produção de vídeo e design gráfico pela A.N.D STUDIOS, personalizados para elevar a identidade visual da sua marca e cativar seu público.",
     "getQuote": "Solicitar Orçamento",
     "viewPortfolio": "Ver Portfólio",
     "scrollDown": "Rolar para Baixo"
   },
   "about": {
-    "title": "Sobre Mim",
+    "title": "Sobre A.N.D STUDIOS",
     "intro": "Olá! Sou um videomaker e designer gráfico apaixonado com mais de 8 anos de experiência criando conteúdo visual envolvente para marcas e indivíduos. Minha missão é ajudar empresas a comunicar suas histórias únicas através de produção de vídeo de alta qualidade e design impressionante.",
     "belief": "Acredito que uma boa narrativa visual pode transformar a maneira como o público percebe e se envolve com sua marca. Seja você precisando de uma produção de vídeo profissional ou designs gráficos atraentes, estou dedicado a entregar resultados que excedam suas expectativas.",
     "stats": {

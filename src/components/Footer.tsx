@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 
@@ -11,9 +10,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Column 1: About */}
           <div>
-            <h3 className="text-xl font-bold mb-4 light-mode-heading">CreativeCanvas</h3>
+            <h3 className="text-xl font-bold mb-4 light-mode-heading">A.N.D STUDIOS</h3>
             <p className="light-mode-text mb-6">
-              Professional video production and graphic design services that help businesses communicate their vision and captivate their audience.
+              Professional video production and graphic design services by A.N.D STUDIOS that help businesses communicate their vision and captivate their audience.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-700 hover:text-and-blue dark:text-white dark:hover:text-primary transition-colors">
@@ -149,10 +148,9 @@ const Footer = () => {
         </div>
       </div>
       
-      {/* Copyright - Updated to use dark mode classes */}
       <div className="bg-gray-100 dark:bg-and-dark py-6">
         <div className="container mx-auto text-center text-gray-600 dark:text-gray-400 text-sm">
-          <p>© {currentYear} CreativeCanvas. All rights reserved. Professional Video & Graphic Design Services.</p>
+          <p>© {currentYear} A.N.D STUDIOS. All rights reserved. Professional Video & Graphic Design Services.</p>
         </div>
       </div>
     </footer>
