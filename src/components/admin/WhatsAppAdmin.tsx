@@ -18,7 +18,7 @@ const WhatsAppAdmin = () => {
     toast({
       title: "WhatsApp number updated",
       description: "The WhatsApp contact number has been updated successfully.",
-      variant: "success",
+      variant: "default",
     });
   };
 
@@ -27,7 +27,7 @@ const WhatsAppAdmin = () => {
     toast({
       title: "WhatsApp message updated",
       description: "The default message has been updated successfully.",
-      variant: "success",
+      variant: "default",
     });
   };
 
@@ -35,7 +35,7 @@ const WhatsAppAdmin = () => {
     toast({
       title: "WhatsApp settings saved",
       description: "Your WhatsApp contact settings have been saved.",
-      variant: "success",
+      variant: "default",
     });
   };
 
