@@ -1,8 +1,8 @@
-
 import { ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import AnimatedBackground from './AnimatedBackground';
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -22,6 +22,9 @@ const Hero = () => {
 
   return (
     <section id="home" className="min-h-screen bg-white dark:bg-and-dark flex items-center relative overflow-hidden">
+      {/* Add AnimatedBackground component before other background elements */}
+      <AnimatedBackground />
+      
       {/* Background elements */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(13,118,128,0.15),transparent_50%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(255,87,51,0.1),transparent_50%)]"></div>
