@@ -10,10 +10,17 @@ import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 
 const Index = () => {
+  // Define the variants correctly - move transition inside the variant properties
   const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
+    initial: { 
+      opacity: 0, 
+      y: 20 
+    },
+    animate: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6 }
+    }
   };
 
   return (
