@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   Table,
@@ -21,6 +20,7 @@ interface Message {
   service: string;
   message: string;
   date: string;
+  whatsapp: string;
 }
 
 const MessagesAdmin = () => {
@@ -60,6 +60,7 @@ const MessagesAdmin = () => {
                 <TableHead>Date</TableHead>
                 <TableHead>Name</TableHead>
                 <TableHead>Email</TableHead>
+                <TableHead>WhatsApp</TableHead>
                 <TableHead>Service</TableHead>
                 <TableHead>Subject</TableHead>
                 <TableHead>Message</TableHead>
@@ -77,6 +78,7 @@ const MessagesAdmin = () => {
                   </TableCell>
                   <TableCell>{msg.name}</TableCell>
                   <TableCell>{msg.email}</TableCell>
+                  <TableCell>{msg.whatsapp}</TableCell>
                   <TableCell>{msg.service}</TableCell>
                   <TableCell>{msg.subject}</TableCell>
                   <TableCell className="max-w-xs truncate">{msg.message}</TableCell>

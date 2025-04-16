@@ -9,7 +9,8 @@ const Contact = () => {
     email: '',
     subject: '',
     message: '',
-    service: 'Select Service'
+    service: 'Select Service',
+    whatsapp: ''
   });
   const [loading, setLoading] = useState(false);
 
@@ -46,7 +47,8 @@ const Contact = () => {
         email: '',
         subject: '',
         message: '',
-        service: 'Select Service'
+        service: 'Select Service',
+        whatsapp: ''
       });
     }, 1000);
   };
@@ -215,6 +217,21 @@ const Contact = () => {
                       value={formData.subject}
                       onChange={handleChange}
                       className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-primary focus:border-primary transition-colors bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="whatsapp" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                      WhatsApp Number
+                    </label>
+                    <input
+                      type="tel"
+                      id="whatsapp"
+                      name="whatsapp"
+                      value={formData.whatsapp}
+                      onChange={handleChange}
+                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-primary focus:border-primary transition-colors bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                      placeholder="+1 (234) 567-890"
                     />
                   </div>
                   
