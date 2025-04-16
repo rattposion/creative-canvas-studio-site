@@ -7,7 +7,6 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    whatsapp: '',
     subject: '',
     message: '',
     service: 'Select Service'
@@ -23,6 +22,7 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
     
+    // Save the message to localStorage
     const newMessage = {
       id: Date.now().toString(),
       ...formData,
@@ -34,6 +34,7 @@ const Contact = () => {
     messages.unshift(newMessage);
     localStorage.setItem('contact-messages', JSON.stringify(messages));
 
+    // Show success message
     setTimeout(() => {
       toast({
         title: "Message Sent!",
@@ -43,7 +44,6 @@ const Contact = () => {
       setFormData({
         name: '',
         email: '',
-        whatsapp: '',
         subject: '',
         message: '',
         service: 'Select Service'
@@ -63,6 +63,7 @@ const Contact = () => {
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+          {/* Contact Information */}
           <div className="lg:col-span-2">
             <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 md:p-8 h-full">
               <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-white">Contact Information</h3>
@@ -146,6 +147,7 @@ const Contact = () => {
             </div>
           </div>
           
+          {/* Contact Form */}
           <div className="lg:col-span-3">
             <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 md:p-8">
               <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-white">Send a Message</h3>
@@ -178,21 +180,6 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-primary focus:border-primary transition-colors bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="whatsapp" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                      WhatsApp Number
-                    </label>
-                    <input
-                      type="tel"
-                      id="whatsapp"
-                      name="whatsapp"
-                      value={formData.whatsapp}
-                      onChange={handleChange}
-                      placeholder="+1234567890"
                       className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-primary focus:border-primary transition-colors bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                     />
                   </div>

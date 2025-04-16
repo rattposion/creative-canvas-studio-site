@@ -17,7 +17,6 @@ interface Message {
   id: string;
   name: string;
   email: string;
-  whatsapp: string; // Add WhatsApp to interface
   subject: string;
   service: string;
   message: string;
@@ -61,7 +60,6 @@ const MessagesAdmin = () => {
                 <TableHead>Date</TableHead>
                 <TableHead>Name</TableHead>
                 <TableHead>Email</TableHead>
-                <TableHead>WhatsApp</TableHead>
                 <TableHead>Service</TableHead>
                 <TableHead>Subject</TableHead>
                 <TableHead>Message</TableHead>
@@ -79,7 +77,6 @@ const MessagesAdmin = () => {
                   </TableCell>
                   <TableCell>{msg.name}</TableCell>
                   <TableCell>{msg.email}</TableCell>
-                  <TableCell>{msg.whatsapp || '-'}</TableCell>
                   <TableCell>{msg.service}</TableCell>
                   <TableCell>{msg.subject}</TableCell>
                   <TableCell className="max-w-xs truncate">{msg.message}</TableCell>
